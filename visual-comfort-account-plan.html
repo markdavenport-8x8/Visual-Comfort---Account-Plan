@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Visual Comfort &amp; Co. — 8x8 Strategic Account Plan</title>
+<style>
+  :root {
+    --dark: #2a2a2a;
+    --darker: #1e1e1e;
+    --teal: #00a99d;
+    --lime: #bdd834;
+    --orange: #f26522;
+    --purple: #7b4f9e;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --text-dark: #1e1e1e;
+    --text-mid: #444444;
+    --text-light: #777777;
+    --border: #e0d8cc;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--darker);
+    color: var(--white);
+    padding: 56px 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 280px; height: 280px;
+    background: var(--lime);
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+    opacity: 0.9;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: 160px;
+    width: 120px; height: 120px;
+    background: var(--teal);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    opacity: 0.7;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-badge span { color: var(--lime); }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .hero h1 em { color: var(--lime); font-style: normal; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    position: relative; z-index: 1;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+  .hero-meta-item { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .hero-meta-item strong { display: block; color: var(--white); font-size: 14px; }
+
+  /* ── POSTURE BANNER ── */
+  .posture-banner {
+    background: var(--teal);
+    color: var(--white);
+    padding: 16px 64px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .posture-banner strong { font-size: 15px; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 48px 64px; }
+  .section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--darker);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ── STAT CARDS ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px 18px;
+    border-top: 4px solid var(--teal);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .stat-card.orange { border-top-color: var(--orange); }
+  .stat-card.lime { border-top-color: var(--lime); }
+  .stat-card.purple { border-top-color: var(--purple); }
+  .stat-card.dark { border-top-color: var(--darker); }
+  .stat-number {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--darker);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-detail { font-size: 12px; color: var(--text-mid); margin-top: 6px; }
+
+  /* ── STAKEHOLDER CARDS ── */
+  .stakeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .stakeholder-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .stakeholder-card.champion { border-left-color: var(--teal); }
+  .stakeholder-card.executive { border-left-color: var(--orange); }
+  .stakeholder-card.technical { border-left-color: var(--lime); }
+  .stakeholder-card.partner { border-left-color: var(--purple); }
+  .sk-role {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .sk-name { font-size: 16px; font-weight: 700; color: var(--darker); margin-bottom: 2px; }
+  .sk-title { font-size: 13px; color: var(--text-mid); margin-bottom: 10px; }
+  .sk-email { font-size: 12px; color: var(--teal); text-decoration: none; }
+  .sk-email:hover { text-decoration: underline; }
+  .sk-priority {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-mid);
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 8px 10px;
+    border-left: 3px solid var(--lime);
+  }
+  .sk-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--teal);
+    color: var(--white);
+  }
+
+  /* ── LICENSE TABLE ── */
+  .license-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .license-table th {
+    background: var(--darker);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .license-table td { padding: 11px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  .license-table tr:last-child td { border-bottom: none; }
+  .license-table tr:hover td { background: #faf8f4; }
+  .util-bar-wrap { width: 120px; height: 8px; background: #e8e3d8; border-radius: 4px; overflow: hidden; }
+  .util-bar { height: 100%; border-radius: 4px; }
+  .util-full { background: var(--orange); }
+  .util-high { background: var(--warning); }
+  .util-med { background: var(--teal); }
+  .util-low { background: var(--border); }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-red { background: #fde8e8; color: #c0392b; }
+  .badge-yellow { background: #fef9e7; color: #b7770d; }
+  .badge-teal { background: #e0f6f5; color: #007a74; }
+  .badge-gray { background: #f0ece4; color: #666; }
+
+  /* ── OPPORTUNITY CARDS ── */
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .opp-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .opp-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .opp-title { font-size: 15px; font-weight: 700; color: var(--darker); margin-bottom: 8px; }
+  .opp-body { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .opp-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+  .tag-high { background: #fde8e8; color: #c0392b; }
+  .tag-med { background: #fef3e2; color: #c17f24; }
+  .tag-teal { background: #e0f6f5; color: #007a74; }
+
+  /* ── RISK TABLE ── */
+  .risk-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .risk-table th { background: var(--dark); color: var(--white); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 16px; text-align: left; }
+  .risk-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .risk-table tr:last-child td { border-bottom: none; }
+  .risk-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .dot-high { background: var(--danger); }
+  .dot-med { background: var(--warning); }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-dot {
+    position: absolute;
+    left: -26px; top: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .tl-dot.orange { background: var(--orange); box-shadow: 0 0 0 2px var(--orange); }
+  .tl-dot.lime { background: var(--lime); box-shadow: 0 0 0 2px var(--lime); }
+  .tl-date { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 4px; }
+  .tl-content { font-size: 14px; color: var(--text-dark); }
+  .tl-content strong { color: var(--darker); }
+
+  /* ── ROADMAP ── */
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .roadmap-phase {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .roadmap-phase.phase1 { border-top: 4px solid var(--teal); }
+  .roadmap-phase.phase2 { border-top: 4px solid var(--orange); }
+  .roadmap-phase.phase3 { border-top: 4px solid var(--lime); }
+  .phase-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .phase1 .phase-label { color: var(--teal); }
+  .phase2 .phase-label { color: var(--orange); }
+  .phase3 .phase-label { color: #7a8c00; }
+  .phase-title { font-size: 16px; font-weight: 700; color: var(--darker); margin-bottom: 14px; }
+  .phase-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-mid);
+  }
+  .phase-item::before {
+    content: '→';
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── METRICS TABLE ── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .metric-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-bottom: 3px solid var(--border);
+  }
+  .metric-card.teal { border-bottom-color: var(--teal); }
+  .metric-card.orange { border-bottom-color: var(--orange); }
+  .metric-card.lime { border-bottom-color: var(--lime); }
+  .metric-outcome { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-light); margin-bottom: 6px; }
+  .metric-kpi { font-size: 13px; color: var(--text-dark); }
+
+  /* ── ACTIVE INITIATIVES ── */
+  .initiative-list { display: flex; flex-direction: column; gap: 14px; }
+  .initiative-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--teal);
+  }
+  .initiative-card.orange { border-left-color: var(--orange); }
+  .initiative-card.purple { border-left-color: var(--purple); }
+  .initiative-card.warning { border-left-color: var(--warning); }
+  .init-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .init-title { font-size: 15px; font-weight: 700; color: var(--darker); margin-bottom: 4px; }
+  .init-body { font-size: 13px; color: var(--text-mid); }
+  .init-status {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+    align-self: center;
+  }
+  .status-active { background: #e0f6f5; color: #007a74; }
+  .status-pending { background: #fef3e2; color: #c17f24; }
+  .status-paused { background: #fde8e8; color: #c0392b; }
+  .status-monitor { background: #f0ece4; color: #666; }
+
+  /* ── TEAM GRID ── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  .team-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--darker);
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .team-avatar.teal { background: var(--teal); }
+  .team-avatar.orange { background: var(--orange); }
+  .team-avatar.purple { background: var(--purple); }
+  .team-name { font-size: 13px; font-weight: 700; color: var(--darker); }
+  .team-role { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+  .team-email { font-size: 11px; color: var(--teal); margin-top: 4px; text-decoration: none; }
+  .team-email:hover { text-decoration: underline; }
+
+  /* ── NARRATIVE BOX ── */
+  .narrative-box {
+    background: var(--darker);
+    color: var(--white);
+    border-radius: 14px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .narrative-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 20px;
+    font-size: 120px;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .narrative-box p {
+    font-size: 16px;
+    line-height: 1.7;
+    position: relative; z-index: 1;
+    color: rgba(255,255,255,0.9);
+  }
+  .narrative-box strong { color: var(--lime); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--darker);
+    color: rgba(255,255,255,0.5);
+    padding: 24px 64px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer strong { color: var(--white); }
+
+  /* ── PRINT / RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 36px 24px; }
+    .container { padding: 32px 24px; }
+    .posture-banner { padding: 14px 24px; }
+    .footer { padding: 18px 24px; }
+    .roadmap { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    body { background: white; }
+    .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 0 0 48px; }
+
+  /* ── TWO-COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+  .info-box {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .info-box h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-light); margin-bottom: 12px; }
+  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row span:first-child { color: var(--text-mid); }
+  .info-row span:last-child { font-weight: 600; color: var(--darker); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge"><span>●</span> Active Enterprise Account</div>
+  <h1>Visual Comfort &amp; Co.<br><em>Strategic Account Plan</em></h1>
+  <p class="hero-sub">8x8 UCaaS + CCaaS | Enterprise | Houston, TX &amp; UK</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>Mark Davenport</strong>Enterprise AE — 8x8</div>
+    <div class="hero-meta-item"><strong>Geoff Stoddart</strong>Senior CSM — 8x8</div>
+    <div class="hero-meta-item"><strong>Mike Foreman</strong>Solutions Engineer</div>
+    <div class="hero-meta-item"><strong>Last Updated</strong>July 23, 2026</div>
+    <div class="hero-meta-item"><strong>QBR Scheduled</strong>July 28, 2026</div>
+  </div>
+</div>
+
+<!-- POSTURE BANNER -->
+<div class="posture-banner">
+  <strong>Strategic Posture:</strong> Protect the core platform → Support the customer's chosen AI strategy (Avoca + ElevenLabs) → Expand through Salesforce, QM, WFM, digital engagement, and proactive outreach.
+</div>
+
+<div class="container">
+
+  <!-- ACCOUNT SNAPSHOT -->
+  <div class="section">
+    <div class="section-label">Account Overview</div>
+    <div class="section-title">Account at a Glance</div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">8+ yrs</div>
+        <div class="stat-label">Partnership Tenure</div>
+        <div class="stat-detail">Customer since March 2018</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-number">~1,440</div>
+        <div class="stat-label">Total 8x8 Users</div>
+        <div class="stat-detail">X2 at 97.9% — near capacity; expansion opportunity</div>
+      </div>
+      <div class="stat-card lime">
+        <div class="stat-number">78</div>
+        <div class="stat-label">Deployed Sites</div>
+        <div class="stat-detail">US + United Kingdom</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-number">185</div>
+        <div class="stat-label">CC Agents</div>
+        <div class="stat-detail">Contact Center Advanced — 100% assigned</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Active SOWs / Projects</div>
+        <div class="stat-detail">AvocaAI PS, SIP Trunk, BYAI ElevenLabs</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box">
+        <h4>Technology Stack</h4>
+        <div class="info-row"><span>Enterprise Telephony</span><span>8x8 ✓</span></div>
+        <div class="info-row"><span>Contact Center</span><span>8x8 CC Advanced ✓</span></div>
+        <div class="info-row"><span>Collaboration &amp; Video</span><span>Microsoft Teams</span></div>
+        <div class="info-row"><span>WFM (Hive65)</span><span>8x8 WFM ✓ (Top-15 User)</span></div>
+        <div class="info-row"><span>CRM</span><span>Migrating Zendesk → Salesforce</span></div>
+        <div class="info-row"><span>AI IVR / Voice Agent</span><span>Avoca AI + ElevenLabs TTS</span></div>
+        <div class="info-row"><span>SIP Trunk for AI</span><span>8x8 (O-214411) — In Progress</span></div>
+      </div>
+      <div class="info-box">
+        <h4>CX Performance Baseline (July 2025 EBR)</h4>
+        <div class="info-row"><span>Call Acceptance Rate</span><span style="color:var(--teal);font-weight:700;">97%</span></div>
+        <div class="info-row"><span>Avg Wait Time</span><span style="color:var(--teal);font-weight:700;">13 seconds</span></div>
+        <div class="info-row"><span>Known Strength</span><span>Knowledgeable staff</span></div>
+        <div class="info-row"><span>Improvement Area</span><span>IVR messaging &amp; scripts</span></div>
+        <div class="info-row"><span>Improvement Area</span><span>Post-call survey participation</span></div>
+        <div class="info-row"><span>Improvement Area</span><span>Known-customer data utilization</span></div>
+        <div class="info-row"><span>Next Validation</span><span>After Avoca launch</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOMER PROFILE -->
+  <div class="section">
+    <div class="section-label">Customer Context</div>
+    <div class="section-title">About Visual Comfort &amp; Co.</div>
+    <div class="narrative-box" style="margin-bottom:24px;">
+      <p>Visual Comfort &amp; Co. is a premium decorative and architectural lighting company serving consumers, designers, architects, builders, contractors, trade professionals, and wholesale partners. Their brand promise — <strong>original design, premium materials, craftsmanship</strong> — demands that every customer touchpoint, from the showroom floor to the contact center, matches that standard. Communications isn't an IT function at Visual Comfort; it's part of the brand experience.</p>
+    </div>
+    <div class="two-col">
+      <div class="info-box">
+        <h4>Why Communications Matters Here</h4>
+        <div class="info-row"><span>Complex buying journeys</span><span>Orders, specs, warranty, install</span></div>
+        <div class="info-row"><span>Multiple buyer personas</span><span>Consumer, designer, trade, B2B</span></div>
+        <div class="info-row"><span>Premium brand standard</span><span>Service must match product quality</span></div>
+        <div class="info-row"><span>Distributed workforce</span><span>78 sites incl. showrooms &amp; design offices</span></div>
+        <div class="info-row"><span>Seasonal complexity</span><span>Demand spikes around collections &amp; launches</span></div>
+      </div>
+      <div class="info-box">
+        <h4>Key Customer Objectives</h4>
+        <div class="info-row"><span>AI-driven self-service</span><span>Avoca + ElevenLabs POC</span></div>
+        <div class="info-row"><span>CRM unification</span><span>Salesforce replacing Zendesk</span></div>
+        <div class="info-row"><span>WFM optimization</span><span>Hive65 rollout (breaks/schedule bug active)</span></div>
+        <div class="info-row"><span>Agent quality</span><span>QM fully licensed — adoption TBD</span></div>
+        <div class="info-row"><span>Executive CX vision</span><span>Miti Desai leading transformation</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVE INITIATIVES -->
+  <div class="section">
+    <div class="section-label">Current Projects</div>
+    <div class="section-title">Active Initiatives &amp; Status</div>
+    <div class="initiative-list">
+
+      <div class="initiative-card orange">
+        <div class="init-icon">🤖</div>
+        <div>
+          <div class="init-title">Avoca AI + ElevenLabs — SIP Trunk Integration</div>
+          <div class="init-body">Visual Comfort is deploying Avoca AI as their AI-powered IVR / voice agent with ElevenLabs for text-to-speech. The 8x8 SIP trunk (SOW O-214411) connects the AI agent to the contact center. SIP connectivity issues were encountered (call hanging); Beverly Erediano and Brendan Sullivan from 8x8 PS are engaged. <strong>Update July 23:</strong> Brian French confirmed ElevenLabs is working on an alternative solution for the POC — re-engage when ready. Mark responded: "Just let me know how we can help."</div>
+        </div>
+        <div class="init-status status-pending">Pending POC Revision</div>
+      </div>
+
+      <div class="initiative-card">
+        <div class="init-icon">🏗️</div>
+        <div>
+          <div class="init-title">PS Block of Hours — AvocaAI Consultation (SOW O-214249)</div>
+          <div class="init-body">Professional Services block of hours scoped for AvocaAI architecture and configuration work. SOW v3 dated July 17, 2026. Aldrin Shaji requested PS involvement on June 15. Brendan Sullivan and Beverly Erediano assigned. This supports the Avoca integration architecture, routing, and failover design.</div>
+        </div>
+        <div class="init-status status-active">Active</div>
+      </div>
+
+      <div class="initiative-card warning">
+        <div class="init-icon">📋</div>
+        <div>
+          <div class="init-title">Hive65 WFM — Open Issue: Breaks Disappearing from Shifts</div>
+          <div class="init-body">Brian French escalated a WFM issue on July 10. Dev team (Hari Chandana &amp; Karthi Adhimoolam) reported that breaks added to shifts keep disappearing. Support case C5753940 opened. Mark looped in Geoff Stoddart and Mike Foreman. Status not fully resolved as of July 13 — Hari testing a workaround using "Will Call" sub-status. 8x8 WFM team notified as top-15 user account. <em>Risk: unresolved WFM friction ahead of July 28 QBR.</em></div>
+        </div>
+        <div class="init-status status-monitor">Monitor / Resolve Before QBR</div>
+      </div>
+
+      <div class="initiative-card purple">
+        <div class="init-icon">🔄</div>
+        <div>
+          <div class="init-title">ElevenLabs | Salesforce &amp; 8x8 Kickoff — Integration Planning</div>
+          <div class="init-body">Cross-functional kickoff involving Visual Comfort (Brian French, Aldrin Shaji, Miti Desai, Glenda Martinez, Sathya Munisami, Lilian Villegas), ElevenLabs (Alex P, Shawna, Gayathri), and Avoca AI (Jay Parekh team). Discussions are about SIP trunking between ElevenLabs TTS voice + Avoca AI + 8x8 contact center, and how Salesforce data flows into the AI agent. PS involvement confirmed — scoping underway.</div>
+        </div>
+        <div class="init-status status-active">Active</div>
+      </div>
+
+      <div class="initiative-card">
+        <div class="init-icon">📅</div>
+        <div>
+          <div class="init-title">Executive Business Review — July 28, 2026</div>
+          <div class="init-body">QBR scheduled for July 28 (rescheduled from August 6). Geoff Stoddart building the Business Review deck (new format). Ryan Boyk (C3 Technology Advisors, channel partner) confirmed attendance. Plan: partnership overview, license/service review, current and future goals, AI roadmap. <em>Renewal conversations have not yet started per Ryan Boyk — this is the entry point.</em></div>
+        </div>
+        <div class="init-status status-active">Confirmed July 28</div>
+      </div>
+
+      <div class="initiative-card">
+        <div class="init-icon">🧾</div>
+        <div>
+          <div class="init-title">25 X1 License Add-On (AO500680123)</div>
+          <div class="init-body">Nick Bonacci (Senior VMO Analyst) requested 25 additional X1 licenses co-termed with the current contract in June 2026. Order processed by Deal Desk (Rose Marie Tiria). Signed via DocuSign. Completed June 15, 2026.</div>
+        </div>
+        <div class="init-status status-active">Completed</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LICENSE UTILIZATION -->
+  <div class="section">
+    <div class="section-label">License Review</div>
+    <div class="section-title">License Utilization — July 17, 2026</div>
+
+    <table class="license-table">
+      <thead>
+        <tr>
+          <th>License / Service</th>
+          <th>Assigned</th>
+          <th>Entitled</th>
+          <th>Utilization</th>
+          <th>Status</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>8x8 Quality Management</strong></td>
+          <td>185</td><td>185</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Confirm full adoption: evals, coaching, calibration, speech</td>
+        </tr>
+        <tr>
+          <td><strong>Contact Center Advanced</strong></td>
+          <td>185</td><td>185</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Core CC footprint — protect &amp; demonstrate value</td>
+        </tr>
+        <tr>
+          <td>CC Call Recordings Hot Storage</td>
+          <td>185</td><td>185</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Fully utilized — confirm retention policy is optimal</td>
+        </tr>
+        <tr>
+          <td>CC Screen Recordings Hot Storage</td>
+          <td>185</td><td>185</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Fully utilized — confirm review workflow</td>
+        </tr>
+        <tr>
+          <td>X Series — X2</td>
+          <td>886</td><td>905</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:97.9%"></div></div> 97.9%</td>
+          <td><span class="badge badge-red">Near Full</span></td>
+          <td>Near capacity — expansion opportunity; discuss upgrade path at QBR</td>
+        </tr>
+        <tr>
+          <td>X Series — X1</td>
+          <td>282</td><td>312</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:90.4%"></div></div> 90.4%</td>
+          <td><span class="badge badge-yellow">High</span></td>
+          <td>High utilization — monitor; 25 added June 2026</td>
+        </tr>
+        <tr>
+          <td>X Series — X3</td>
+          <td>60</td><td>70</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-high" style="width:85.7%"></div></div> 85.7%</td>
+          <td><span class="badge badge-yellow">High</span></td>
+          <td>Strong adoption of X3 features — confirm use cases</td>
+        </tr>
+        <tr>
+          <td>X Series — X4</td>
+          <td>10</td><td>10</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Fully assigned — identify who uses X4 and for what</td>
+        </tr>
+        <tr>
+          <td>X Series — X1 Nationwide</td>
+          <td>2</td><td>2</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Fully assigned</td>
+        </tr>
+        <tr>
+          <td>Toll Free Numbers</td>
+          <td>55</td><td>70</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-high" style="width:78.6%"></div></div> 78.6%</td>
+          <td><span class="badge badge-yellow">High</span></td>
+          <td>Good utilization — monitor as Avoca/IVR routing evolves</td>
+        </tr>
+        <tr>
+          <td>Local Number — Included</td>
+          <td>966</td><td>1,299</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-high" style="width:74.4%"></div></div> 74.4%</td>
+          <td><span class="badge badge-teal">Healthy</span></td>
+          <td>Good coverage across 78 sites</td>
+        </tr>
+        <tr>
+          <td>Additional Local Number</td>
+          <td>489</td><td>1,377</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-med" style="width:35.5%"></div></div> 35.5%</td>
+          <td><span class="badge badge-teal">Moderate</span></td>
+          <td>Headroom available — validate vs active site count</td>
+        </tr>
+        <tr>
+          <td>Additional Named User</td>
+          <td>179</td><td>925</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-low" style="width:19.4%"></div></div> 19.4%</td>
+          <td><span class="badge badge-gray">Low</span></td>
+          <td>Large pool, low utilization — validate active vs provisioned before renewal</td>
+        </tr>
+        <tr>
+          <td>Toll Free Numbers (single)</td>
+          <td>1</td><td>1</td>
+          <td><div class="util-bar-wrap"><div class="util-bar util-full" style="width:100%"></div></div> 100%</td>
+          <td><span class="badge badge-red">Full</span></td>
+          <td>Fully assigned</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background: var(--white); border-radius: 10px; padding: 16px 20px; margin-top: 16px; border-left: 4px solid var(--teal); font-size: 13px; color: var(--text-mid); box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+      <strong style="color:var(--darker);">📈 Renewal &amp; Expansion Alert:</strong> X2 is at 97.9% utilization (886/905) and X1 at 90.4% — near capacity on core UC licenses. Bring an expansion conversation to the July 28 QBR. The Additional Named User pool (19.4%) is the one area to validate before renewal to ensure provisioned counts reflect active users. CC footprint remains at 100% across all 185 seats — strong adoption story to lead with.
+    </div>
+  </div>
+
+  <!-- KEY STAKEHOLDERS -->
+  <div class="section">
+    <div class="section-label">Relationship Map</div>
+    <div class="section-title">Visual Comfort Stakeholders</div>
+    <div class="stakeholder-grid">
+
+      <div class="stakeholder-card technical">
+        <div class="sk-role">Technical Champion</div>
+        <div class="sk-name">Aldrin Shaji</div>
+        <div class="sk-title">Sr. Network &amp; 8x8 Specialist</div>
+        <a class="sk-email" href="mailto:d4.ashaji@visualcomfort.com">d4.ashaji@visualcomfort.com</a>
+        <div class="sk-priority">Owns SIP trunk &amp; integration architecture. Requested PS for ElevenLabs kickoff. Primary day-to-day technical contact — all integration questions go through him.</div>
+        <span class="sk-tag" style="background:var(--lime);color:var(--darker);">Primary Technical</span>
+      </div>
+
+      <div class="stakeholder-card champion">
+        <div class="sk-role">CX Operations Champion</div>
+        <div class="sk-name">Brian French</div>
+        <div class="sk-title">Senior Director, Customer Experience</div>
+        <a class="sk-email" href="mailto:BFrench@visualcomfort.com">BFrench@visualcomfort.com</a>
+        <div>📞 +1 (281) 962-4943</div>
+        <div class="sk-priority">Driving the Avoca AI + ElevenLabs deployment. Escalated WFM issues. Requested the SIP Trunk SOW and PS involvement. Primary business champion — keep engaged on every active initiative.</div>
+        <span class="sk-tag">Active Champion</span>
+      </div>
+
+      <div class="stakeholder-card executive">
+        <div class="sk-role">Executive Sponsor Target</div>
+        <div class="sk-name">Miti Desai</div>
+        <div class="sk-title">Chief Customer Experience Officer</div>
+        <a class="sk-email" href="mailto:MDesai@visualcomfort.com">MDesai@visualcomfort.com</a>
+        <div class="sk-priority">CCed on Avoca AI, ElevenLabs, and SIP trunk threads — she's watching closely. Enterprise CX strategy and AI vision owner. Target for executive alignment with 8x8 leadership. Align platform roadmap to her CX transformation vision.</div>
+        <span class="sk-tag" style="background:var(--orange);">Exec Alignment Target</span>
+      </div>
+
+      <div class="stakeholder-card">
+        <div class="sk-role">Design / CX Experience</div>
+        <div class="sk-name">Glenda Martinez</div>
+        <div class="sk-title">Head Designer / Design Director</div>
+        <a class="sk-email" href="mailto:GMartinez@visualcomfort.com">GMartinez@visualcomfort.com</a>
+        <div class="sk-priority">On Avoca AI and ElevenLabs kickoff threads. Represents premium design consultation workflows — explore video, appointment scheduling, and remote design-session use cases.</div>
+        <span class="sk-tag" style="background:var(--purple);">Design Use Cases</span>
+      </div>
+
+      <div class="stakeholder-card">
+        <div class="sk-role">Procurement / VMO</div>
+        <div class="sk-name">Nick Bonacci</div>
+        <div class="sk-title">Senior VMO Analyst</div>
+        <a class="sk-email" href="mailto:NBonacci@visualcomfort.com">NBonacci@visualcomfort.com</a>
+        <div>📞 281.841.6886</div>
+        <div class="sk-priority">Processed the 25 X1 license add-on in June 2026. Key contact for procurement and contract changes. Engage early in renewal cycle.</div>
+        <span class="sk-tag" style="background:var(--text-mid);">Procurement</span>
+      </div>
+
+      <div class="stakeholder-card">
+        <div class="sk-role">WFM Dev Lead</div>
+        <div class="sk-name">Hari Chandana &amp; Karthi Adhimoolam</div>
+        <div class="sk-title">Internal Developer / Technical</div>
+        <a class="sk-email" href="mailto:hchandana@visualcomfort.com">hchandana@visualcomfort.com</a>
+        <div class="sk-priority">Technical contacts for Hive65 WFM implementation. Reported breaks-disappearing bug. Ensure open WFM cases are resolved before QBR.</div>
+        <span class="sk-tag" style="background:var(--warning);color:#fff;">WFM Issue Active</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PARTNER ECOSYSTEM -->
+  <div class="section">
+    <div class="section-label">Partner &amp; Vendor Ecosystem</div>
+    <div class="section-title">Third-Party Stakeholders</div>
+    <div class="stakeholder-grid">
+
+      <div class="stakeholder-card partner">
+        <div class="sk-role">Channel Partner</div>
+        <div class="sk-name">Ryan Boyk</div>
+        <div class="sk-title">Global Technology Advisor — C3 Technology Advisors</div>
+        <a class="sk-email" href="mailto:rboyk@c3techadvisors.com">rboyk@c3techadvisors.com</a>
+        <div>📞 +1 (616) 259-1599</div>
+        <div class="sk-priority">Confirmed for July 28 QBR. Asked about renewal conversations — not yet started. Attended 2024 onsite review. Important to align with Ryan on renewal positioning before the QBR.</div>
+        <span class="sk-tag" style="background:var(--purple);">Channel Partner</span>
+      </div>
+
+      <div class="stakeholder-card">
+        <div class="sk-role">AI Voice Agent Partner</div>
+        <div class="sk-name">Jay Parekh (jp@avoca.ai)</div>
+        <div class="sk-title">Avoca AI — Account Lead</div>
+        <a class="sk-email" href="mailto:jp@avoca.ai">jp@avoca.ai</a>
+        <div class="sk-priority">Mark connected with Jay on June 1 after taking over account. Avoca team: Ankur Ranjan (engineering), Alex Leistra, Mitul, Nick Gashi. Active integration with 8x8 SIP/PSTN. Treat Avoca as a partner, not a competitor.</div>
+        <span class="sk-tag" style="background:var(--teal);">AI Partner</span>
+      </div>
+
+      <div class="stakeholder-card">
+        <div class="sk-role">TTS / AI Voice Partner</div>
+        <div class="sk-name">ElevenLabs Team</div>
+        <div class="sk-title">Alex P, Shawna, Gayathri</div>
+        <a class="sk-email" href="mailto:alexp@elevenlabs.io">alexp@elevenlabs.io</a>
+        <div class="sk-priority">ElevenLabs provides TTS voice layer for the AI agent. POC paused July 23 — ElevenLabs working on alternative approach. SIP trunk SOW O-214411 will re-engage when POC resumes.</div>
+        <span class="sk-tag" style="background:var(--warning);color:#fff;">POC Paused</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPANSION OPPORTUNITIES -->
+  <div class="section">
+    <div class="section-label">Growth Strategy</div>
+    <div class="section-title">Expansion Opportunities</div>
+    <div class="opp-grid">
+
+      <div class="opp-card">
+        <div class="opp-icon">🔗</div>
+        <div class="opp-title">Salesforce Integration</div>
+        <div class="opp-body">Zendesk → Salesforce migration is the #1 CRM priority. 8x8's native Salesforce connector delivers screen pops, auto-logging, AI summaries, case creation, and routing based on CRM data. Embedding communications into Salesforce gives Miti Desai the unified customer view she needs. ElevenLabs and Avoca AI are already in the ElevenLabs | Salesforce &amp; 8x8 Kickoff thread.</div>
+        <span class="opp-tag tag-high">High Priority</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">📊</div>
+        <div class="opp-title">QM &amp; Speech Analytics Activation</div>
+        <div class="opp-body">All 185 QM licenses are assigned — but are they fully used? Confirm adoption of evaluation forms, coaching workflows, calibration, screen recording, and speech-driven scoring. Key use case: compare Avoca-handled vs. transferred vs. agent-only journeys to quantify AI ROI. Visual Comfort is already flagged as a top-15 WFM user, suggesting data-driven adoption.</div>
+        <span class="opp-tag tag-high">High Priority</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">📅</div>
+        <div class="opp-title">WFM Optimization (Hive65)</div>
+        <div class="opp-body">Visual Comfort is a <strong>top-15 WFM user</strong> (per Jonathan McKenzie email July 23). Active issues with Hive65 breaks-disappearing bug need resolution. Opportunity: model how Avoca AI containment changes staffing needs, optimize schedules around seasonal lighting launches, showroom hours, and trade-program activity. WFM is a stickiness and expansion play.</div>
+        <span class="opp-tag tag-med">Medium Priority</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">💬</div>
+        <div class="opp-title">Digital Engagement</div>
+        <div class="opp-body">Web chat, messaging, appointment scheduling for showroom and virtual design consultations. Premium brand customers expect digital escalation from AI → live agent. Glenda Martinez (Design Director) is already engaged in the kickoff thread — design consultation, product image sharing, and video support are natural fits for the Visual Comfort premium experience.</div>
+        <span class="opp-tag tag-med">Medium Priority</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">📣</div>
+        <div class="opp-title">Proactive Outreach</div>
+        <div class="opp-body">Outbound notifications for order status, delivery, backorder, appointment reminders, warranty follow-up, showroom event invites, and collection launches. Reduces inbound call volume and aligns with Avoca AI containment goals. Especially valuable for the designer/trade segment and seasonal spikes.</div>
+        <span class="opp-tag tag-teal">Near Term</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">🎥</div>
+        <div class="opp-title">Video Design Consultations</div>
+        <div class="opp-body">Virtual lighting consultations, video support for installation/troubleshooting, remote room layout assessment. Glenda Martinez's role and the premium brand make this a compelling executive-level use case. Outcomes captured in Salesforce create a full design-consultation record. Differentiates Visual Comfort from lower-touch competitors.</div>
+        <span class="opp-tag tag-teal">Near Term</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RISKS -->
+  <div class="section">
+    <div class="section-label">Risk Management</div>
+    <div class="section-title">Account Risks &amp; Mitigations</div>
+    <table class="risk-table">
+      <thead>
+        <tr>
+          <th>Risk</th>
+          <th>Probability</th>
+          <th>Impact</th>
+          <th>Mitigation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ElevenLabs/Avoca POC fragmentation</strong> — paused POC creates integration uncertainty; could shift budget or vendor conversation</td>
+          <td><span class="risk-dot dot-high"></span>High</td>
+          <td><span class="risk-dot dot-high"></span>High</td>
+          <td>Stay engaged; offer PS support whenever POC resumes; own the SIP architecture regardless of TTS layer</td>
+        </tr>
+        <tr>
+          <td><strong>WFM Hive65 issues unresolved at QBR</strong> — breaks-disappearing bug and support friction entering July 28 review</td>
+          <td><span class="risk-dot dot-high"></span>High</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td>Escalate C5753940 to closure before July 28; provide status update proactively to Brian French</td>
+        </tr>
+        <tr>
+          <td><strong>X2 near capacity (97.9%) without expansion plan</strong> — hitting ceiling on core UC licenses with no upsell conversation started</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td>Bring expansion conversation to July 28 QBR; present near-capacity data and model growth path; validate Additional Named User pool against active users</td>
+        </tr>
+        <tr>
+          <td><strong>Avoca becomes primary AI partner</strong> — 8x8 perceived as commodity telephony infrastructure</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td><span class="risk-dot dot-high"></span>High</td>
+          <td>Position 8x8 as the orchestration, routing, recording, analytics, and Salesforce-integration layer; present as platform + ecosystem partner</td>
+        </tr>
+        <tr>
+          <td><strong>Salesforce migration introduces CCaaS re-evaluation</strong> — new CRM partner may recommend competitive CC integration</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td><span class="risk-dot dot-high"></span>High</td>
+          <td>Lead the Salesforce integration roadmap; demonstrate 8x8 native connector value before Salesforce partner is fully engaged</td>
+        </tr>
+        <tr>
+          <td><strong>QM licensed but not fully operationalized</strong> — 185 licenses assigned but coaching/calibration adoption unknown</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td>Run QM maturity assessment; build adoption roadmap with Brian French; tie QM outcomes to Avoca performance comparison</td>
+        </tr>
+        <tr>
+          <td><strong>Service/support friction weakens executive confidence</strong> — desktop app issues and WFM escalations signal support gaps</td>
+          <td><span class="risk-dot dot-med"></span>Medium</td>
+          <td><span class="risk-dot dot-high"></span>High</td>
+          <td>Formal operating cadence, proactive case reporting, escalation map; resolve open items before QBR</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RECENT EMAIL ACTIVITY -->
+  <div class="section">
+    <div class="section-label">Account Activity Log</div>
+    <div class="section-title">Recent Engagement Timeline</div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot orange"></div>
+        <div class="tl-date">July 23, 2026</div>
+        <div class="tl-content"><strong>ElevenLabs POC paused.</strong> Brian French: "ElevenLabs is working on an alternative solution for the POC. We will re-engage on this if needed." Mark responded offering continued support. 8x8 remains engaged and ready.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot orange"></div>
+        <div class="tl-date">July 23, 2026</div>
+        <div class="tl-content"><strong>WFM top-15 user flag.</strong> Jonathan McKenzie (8x8) noted Visual Comfort is among the top-15 most active Hive65 WFM users — opportunity to lead a best-practices session and deepen WFM adoption.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 22, 2026</div>
+        <div class="tl-content"><strong>Brian French requested ElevenLabs SOW PDF</strong> (O-00684886), CCing Miti Desai. Mark sent the PDF and offered to schedule a call with PS team. Confirms Miti is actively watching this initiative.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 20, 2026</div>
+        <div class="tl-content"><strong>QBR Business Review deck started.</strong> Geoff Stoddart began building the Business Review deck for July 28. New deck format. Slides flagged for review with Mark and Mike Foreman.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 17, 2026</div>
+        <div class="tl-content"><strong>Meeting summary received</strong> for "Visual Comfort - SIP Trunk - 8x8 - ElevenLabs-SF/AvocaAI" session with Brian French, Alex (ElevenLabs), and team. Beverly Erediano and Brendan Sullivan involved from 8x8 PS.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 16, 2026</div>
+        <div class="tl-content"><strong>SIP trunk ticket O-214411 escalated.</strong> Geoff Stoddart requested update on Operations Ticket for SIP trunk to AI agent. Mark suggested a block of hours; PS team engaged. Aldrin: "We need assistance with SIP trunking." Mark proposed Professional Services engagement and provided time slots.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot lime"></div>
+        <div class="tl-date">July 15, 2026</div>
+        <div class="tl-content"><strong>ElevenLabs | Salesforce &amp; 8x8 Kickoff thread.</strong> Aldrin Shaji requested PS involvement. Full cross-functional thread with Miti Desai, Glenda Martinez, ElevenLabs, and Avoca AI team active. Brian French: "Please advise resource and we can set up a call ASAP."</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 13–14, 2026</div>
+        <div class="tl-content"><strong>QBR date change.</strong> Rescheduled from August 6 → July 28. Ryan Boyk (C3) confirmed attendance. Ryan asked about renewal conversations — not started yet.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot orange"></div>
+        <div class="tl-date">July 10–13, 2026</div>
+        <div class="tl-content"><strong>WFM Hive65 escalation.</strong> Brian French raised WFM support issues. Case C5753940 opened. Hari and Karthi (dev team) reported breaks disappearing from shifts. Mark, Geoff, and Mike Foreman looped in to track resolution.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">June 26 – July 2, 2026</div>
+        <div class="tl-content"><strong>Avoca AI + 8x8 interoperability.</strong> Aldrin looped Mark into the Avoca AI ↔ 8x8 interoperability thread. Brendan Sullivan confirmed SIP/PSTN setup requirements. Ankur (Avoca) reported call-hanging issue. Brian French coordinated availability to resolve.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot lime"></div>
+        <div class="tl-date">June 15, 2026</div>
+        <div class="tl-content"><strong>PS SOW O-214249 submitted</strong> for AvocaAI consultation (Block of Hours). Beverly Erediano and Brendan Sullivan assigned. Visual Comfort x Avoca technical scoping session held June 16 — 8x8 team: Mark, Arlee Taylor, Mike Foreman, Kelly Miller, Brendan Sullivan.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot lime"></div>
+        <div class="tl-date">June 9, 2026</div>
+        <div class="tl-content"><strong>25 X1 licenses added.</strong> Nick Bonacci ordered 25 X1 licenses co-termed with current contract. Order AO500680123 processed and signed via DocuSign.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">June 1, 2026</div>
+        <div class="tl-content"><strong>Mark Davenport took over account</strong> from Kelly Miller. Introduced himself to Jay Parekh (Avoca AI) and began engaging on open integration questions.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ENGAGEMENT ROADMAP -->
+  <div class="section">
+    <div class="section-label">Action Plan</div>
+    <div class="section-title">30 / 60 / 90 Day Engagement Roadmap</div>
+    <div class="roadmap">
+
+      <div class="roadmap-phase phase1">
+        <div class="phase-label">Now — Day 30</div>
+        <div class="phase-title">Stabilize &amp; Align</div>
+        <div class="phase-item">Resolve WFM breaks bug (C5753940) before July 28 QBR</div>
+        <div class="phase-item">Deliver a strong July 28 QBR — partner overview, AI roadmap, license health, Avoca strategy</div>
+        <div class="phase-item">Validate Avoca + 8x8 SIP architecture with Aldrin and Brendan Sullivan</div>
+        <div class="phase-item">Connect with Miti Desai on CX transformation vision and 8x8 roadmap alignment</div>
+        <div class="phase-item">Align with Ryan Boyk (C3) on renewal positioning before QBR</div>
+        <div class="phase-item">Identify Salesforce migration owner and integration timeline</div>
+        <div class="phase-item">Confirm QM adoption depth — are eval forms, coaching, and calibration active?</div>
+        <div class="phase-item">Identify internal 8x8 executive sponsor for Miti Desai relationship</div>
+      </div>
+
+      <div class="roadmap-phase phase2">
+        <div class="phase-label">Days 31–60</div>
+        <div class="phase-title">Expand &amp; Build Value</div>
+        <div class="phase-item">Re-engage ElevenLabs SIP trunk SOW when POC resumes</div>
+        <div class="phase-item">Conduct AI-to-live-agent journey workshop with CC ops team</div>
+        <div class="phase-item">Lead Salesforce integration discovery &amp; demo</div>
+        <div class="phase-item">Run QM maturity assessment — evaluation, coaching, speech analytics</div>
+        <div class="phase-item">Map customer journey across Avoca, 8x8, Salesforce, digital &amp; showroom</div>
+        <div class="phase-item">Develop quantified value hypothesis for one priority use case (Salesforce or QM)</div>
+        <div class="phase-item">Introduce proactive outreach use cases to Brian French</div>
+      </div>
+
+      <div class="roadmap-phase phase3">
+        <div class="phase-label">Days 61–90</div>
+        <div class="phase-title">Lock in Renewal Position</div>
+        <div class="phase-item">Deliver executive readout: baseline metrics, Avoca performance, 8x8 value</div>
+        <div class="phase-item">Launch one complementary pilot (Salesforce integration, digital engagement, or proactive outreach)</div>
+        <div class="phase-item">Build renewal strategy tied to adoption data and outcomes</div>
+        <div class="phase-item">Establish quarterly EBR and monthly operational cadence</div>
+        <div class="phase-item">Finalize Avoca + 8x8 + Salesforce architecture document</div>
+        <div class="phase-item">Create joint scorecard with VC, Avoca, and 8x8 shared success metrics</div>
+        <div class="phase-item">Present video consultation use case to Glenda Martinez</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUCCESS METRICS -->
+  <div class="section">
+    <div class="section-label">Joint Scorecard</div>
+    <div class="section-title">Business Outcomes &amp; Success Metrics</div>
+    <div class="metrics-grid">
+      <div class="metric-card teal"><div class="metric-outcome">Reduce Customer Effort</div><div class="metric-kpi">Transfers/interaction, repeat contacts, menu depth, auth time</div></div>
+      <div class="metric-card orange"><div class="metric-outcome">AI Effectiveness</div><div class="metric-kpi">Containment rate, intent accuracy, task completion, fallback rate</div></div>
+      <div class="metric-card lime"><div class="metric-outcome">Live Agent Productivity</div><div class="metric-kpi">AHT, after-call work, occupancy, cases resolved per agent</div></div>
+      <div class="metric-card teal"><div class="metric-outcome">Service Quality</div><div class="metric-kpi">FCR, 97% acceptance rate (baseline), wait time, abandonment, SLA</div></div>
+      <div class="metric-card orange"><div class="metric-outcome">Premium Brand Protection</div><div class="metric-kpi">CSAT, NPS, sentiment score, escalation rate, complaint rate</div></div>
+      <div class="metric-card lime"><div class="metric-outcome">Salesforce Adoption</div><div class="metric-kpi">Interaction logging rate, automated record creation, data completeness</div></div>
+      <div class="metric-card teal"><div class="metric-outcome">Quality &amp; Coaching</div><div class="metric-kpi">Evaluation coverage, coaching completion, behavior improvement scores</div></div>
+      <div class="metric-card orange"><div class="metric-outcome">Cost Optimization</div><div class="metric-kpi">Cost per contact, cost per resolution, overtime reduction, vendor overlap</div></div>
+      <div class="metric-card lime"><div class="metric-outcome">Revenue Impact</div><div class="metric-kpi">Conversion, saved sales, appointment completion, cross-sell opportunities</div></div>
+    </div>
+  </div>
+
+  <!-- 8x8 ACCOUNT TEAM -->
+  <div class="section">
+    <div class="section-label">Internal Team</div>
+    <div class="section-title">8x8 Account Team</div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">MD</div>
+        <div class="team-name">Mark Davenport</div>
+        <div class="team-role">Enterprise Account Executive</div>
+        <a class="team-email" href="mailto:mark.davenport@8x8.com">mark.davenport@8x8.com</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar teal">GS</div>
+        <div class="team-name">Geoff Stoddart</div>
+        <div class="team-role">Senior Customer Success Manager</div>
+        <a class="team-email" href="mailto:geoff.stoddart@8x8.com">geoff.stoddart@8x8.com</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar orange">MF</div>
+        <div class="team-name">Mike Foreman</div>
+        <div class="team-role">Solutions Engineer</div>
+        <a class="team-email" href="mailto:mike.foreman@8x8.com">mike.foreman@8x8.com</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">BS</div>
+        <div class="team-name">Brendan Sullivan</div>
+        <div class="team-role">Professional Services — SIP/Avoca Lead</div>
+        <a class="team-email" href="mailto:brendan.sullivan@8x8.com">brendan.sullivan@8x8.com</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar purple">BE</div>
+        <div class="team-name">Beverly Erediano</div>
+        <div class="team-role">Senior Manager, Professional Services</div>
+        <a class="team-email" href="mailto:beverly.erediano@8x8.com">beverly.erediano@8x8.com</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar teal">AT</div>
+        <div class="team-name">Arlee Taylor</div>
+        <div class="team-role">Sr. Business Optimization Consultant</div>
+        <a class="team-email" href="mailto:arlee.taylor@8x8.com">arlee.taylor@8x8.com</a>
+      </div>
+    </div>
+    <div style="margin-top:16px; font-size:12px; color:var(--text-light);">
+      <em>Prior team (2025 EBR): Leslie Zacharski (CSM), Perry Conner (AM), Naho Becerra (RVP CS), Tyler Soldan (VP Sales), Bryan Martin (CTO)</em>
+    </div>
+  </div>
+
+  <!-- ACCOUNT NARRATIVE -->
+  <div class="section">
+    <div class="section-label">Strategic Narrative</div>
+    <div class="section-title">How We Tell the 8x8 Story</div>
+    <div class="narrative-box">
+      <p>Visual Comfort has chosen <strong>Avoca AI and ElevenLabs</strong> for their voice-agent strategy, and 8x8 should help make that decision successful. Our role is to provide the <strong>reliable communications, contact-center, quality management, workforce optimization, CRM integration, and customer-interaction foundation</strong> around the AI experience. By connecting Avoca, ElevenLabs, 8x8, Salesforce, and Visual Comfort's human service teams, we help create <strong>one measurable, premium customer journey</strong> — rather than another isolated technology deployment. We are not just the phone system. We are the platform that makes every other investment work.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div><strong>Visual Comfort &amp; Co.</strong> — 8x8 Strategic Account Plan</div>
+  <div>Account Owner: <strong>Mark Davenport</strong> | mark.davenport@8x8.com | Last updated July 23, 2026</div>
+  <div>Sources: July 2025 EBR, License Portal Jul 17 2026, Email threads Jun–Jul 2026</div>
+</div>
+
+</body>
+</html>
